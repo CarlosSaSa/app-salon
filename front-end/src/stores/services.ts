@@ -1,22 +1,21 @@
+import type { servicesI } from "@/interfaces/servicesI";
 import { defineStore } from "pinia";
-import { onBeforeMount } from 'vue';
-import servicesAPI from "@/api/servicesAPI";
+import { ref } from 'vue';
 
 
 export const useServices = defineStore('services', () => {
  
+    // Para almacenar los servicios
+    const services = ref<servicesI[]>([]);
 
-    onBeforeMount( async () => {
-        try {
-            const services = await servicesAPI.getAll();
-            console.log(services);
-        } catch (error) {  
-            console.log('Ha ocurrido un error: ', error);
-        }
-    })
-    
+    // Para guardar los servicios
+    const setServices = ( servicesIn: servicesI[] ) => {
+        services.value = servicesIn;
+    }
+
     return {
-
+        services,
+        setServices
     }
 
 })
