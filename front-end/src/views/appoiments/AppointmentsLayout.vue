@@ -20,8 +20,10 @@
 
     </div>
 
+    <div class="space-y-5">
+        <RouterView />
+    </div>
 
-    <RouterView />
 </template>
 
 <style>
